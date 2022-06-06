@@ -27,6 +27,13 @@ import { IndexRouter } from './controllers/v0/index.router';
   // RETURNS
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
+  /*
+  
+   this API is implemented by the following file:
+   image-filter-starter-code\src\controllers\v0\filteredimage\routes\filteredimage.router.ts
+  
+  */
+
   /**************************************************************************** */
   app.use('/api/v0/', IndexRouter)
 

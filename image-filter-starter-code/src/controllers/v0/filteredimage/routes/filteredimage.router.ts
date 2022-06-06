@@ -4,7 +4,7 @@ const router: Router = Router()
 
 // Get all feed items
 router.get('/', async (req: Request, res: Response) => {
-	const { query: {image_url} = {} } = req;
+	const { query: { image_url = ''} = {} } = req;
     
     if (!image_url) {
 			sendResp(res, { message: 'Image URL required' }, 400);
@@ -21,8 +21,8 @@ router.get('/', async (req: Request, res: Response) => {
       const result = await filterImageFromURL(image_url);
       await sendFileAsync(res.sendFile.bind(res), result);
       deleteLocalFiles([result]);
-    } catch (e: any) {
-			sendResp(res, { message: `Server error: ${e.message}` }, 500);
+    } catch ({ message }) {
+			sendResp(res, { message: `Server error: ${message}` }, 500);
     }
 });
 
